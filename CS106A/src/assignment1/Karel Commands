@@ -1,0 +1,67 @@
+Built-in Karel commands:
+	move();
+	turnLeft();
+	putBeeper();
+	pickBeeper();
+	
+Karel program structure:
+/*
+ * Comments may be included anywhere in
+ * the program between a slash-star and
+ * the corresponding star-slash characters.
+ */
+	import stanford.karel.*;
+	
+/* Definition of the new class */
+	public class name extends Karel {
+ 		public void run() {
+ 		statements in the body of the method
+ 		}
+ 			definitions of private methods
+	}
+
+Karel condition names:
+frontIsClear() 		frontIsBlocked()
+leftIsClear() 		leftIsBlocked()
+rightIsClear() 		rightIsBlocked()
+beepersPresent() 	noBeepersPresent()
+beepersInBag() 		noBeepersInBag()
+facingNorth() 		notFacingNorth()
+facingEast() 		notFacingEast()
+facingSouth() 		notFacingSouth()
+facingWest() 		notFacingWest()
+
+Conditional statements:
+if (condition) {
+ statements executed if condition is true
+}
+
+if (condition) {
+ statements executed if condition is true
+} else {
+ statements executed if condition is false
+}
+
+Iterative statements:
+for (int i = 0; i < count; i++) {
+ statements to be repeated
+}
+
+while (condition) {
+ statements to be repeated
+}
+
+Method definition:
+private void name () {
+ statements in the method body
+}
+
+New commands in the SuperKarel class:
+turnRight();
+turnAround();
+paintCorner(color);
+
+New conditions in the SuperKarel class:
+random()
+random(p)
+cornerColorIs(color)
