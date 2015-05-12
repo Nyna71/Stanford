@@ -157,7 +157,8 @@ class BooglePanel extends JPanel implements ActionListener {
 		// Pre-Condition
 		// Empty words means player gives-up to computer's turn 
 		if(word.length() == 0)
-			findRemainingWords();
+			// findRemainingWords();
+			generateWordsRecursive();
 		
 		// Pre-Condition
 		// - word is at least 4 letters
@@ -195,6 +196,47 @@ class BooglePanel extends JPanel implements ActionListener {
 				computerScoreLB.setText(String.valueOf(computerScore));
 		}
 		repaint();
+	}
+	
+	private void generateWordsRecursive() {
+		// Generate all possible words from a recursive approach
+		String word = "";
+		for (int row = 0; row < board.length; row++)
+            for (int col = 0; col < board.length; col++)
+            	generateWord(word, row, col);
+	}
+
+	private void generateWord(String word, int row, int col) {
+		// Check if letter selection is out of bound or already used 
+		if(row < 0 || row >= board.length || col < 0 || col >= board.length ||
+				board[row][col].getBgColor() == Color.GREEN)
+			return ;
+		
+		// Check if computer has generated a valid word
+		if(word.length() >= 4  && !myWords.contains(word) && 
+				!computerWords.contains(word) && lex.containsWord(word)) {
+			System.out.println(word);
+			computerWords.add(word);
+			computerScore += word.length();
+			computerPane.setText(computerWords.toString());
+			computerScoreLB.setText(String.valueOf(computerScore));
+		}
+		
+		// Generate all possible words starting from current board position, and adding
+		// one of adjacent letters
+		else {
+			word += board[row][col].getLetter();
+			board[row][col].setBgColor(Color.GREEN);
+			generateWord(word, row-1, col-1);
+            generateWord(word, row-1,   col);
+            generateWord(word, row-1, col+1);
+            generateWord(word,   row, col-1);
+            generateWord(word,   row, col+1);
+            generateWord(word, row+1, col-1);
+            generateWord(word, row+1,   col);
+            generateWord(word, row+1, col+1);
+		}
+		board[row][col].setBgColor(Color.WHITE);
 	}
 
 	/**

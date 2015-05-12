@@ -59,6 +59,13 @@ class BoggleDice extends JButton {
 	}
 	
 	/**
+	 * Returns the background color of the dice.
+	 */
+	Color getBgColor() {
+		return bgColor;
+	}
+	
+	/**
 	 * The Boggle Dice is graphically represented as a JButton, with the Dice letter being added as
 	 * the JButton's text.
 	 */
