@@ -42,7 +42,8 @@ public class MyVector<ElemType> {
 		   }
 	   }
 	   
-	   public MyVector<ElemType> removeDuplicates() throws CloneNotSupportedException {
+	   @SuppressWarnings("unchecked")
+	public MyVector<ElemType> removeDuplicates() throws CloneNotSupportedException {
 		   MyVector<ElemType> tempVector = new MyVector<ElemType>((Class<ElemType[]>) vector.getClass(), this.size());
 		   Boolean[] keepElem = new Boolean[this.size()];
 		   
