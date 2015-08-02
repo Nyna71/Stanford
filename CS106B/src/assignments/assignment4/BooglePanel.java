@@ -185,6 +185,7 @@ class BooglePanel extends JPanel implements ActionListener {
 		inputTF.setText("");
 	}
 
+	@SuppressWarnings("unused")
 	private void findRemainingWords() {
 		// Go through the lexicon and try to find all remaining words
 		for(String word : lex.getListOfWords()) {
